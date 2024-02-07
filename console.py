@@ -137,10 +137,11 @@ class HBNBCommand(cmd.Cmd):
         # Parse and set the parameters
         for param in args_list:
             try:
-                key, value = param.split('=', 1)
-                key = key.replace('_', ' ')
+                key, value = param.split('=')
                 if value.startswith('"') and value.endswith('"'):
                     value = value[1:-1]
+                    value = value.replace('_', ' ')
+                    value = value.replace('\\', '"')
                 setattr(new_instance, key, value)
             except Exception as e:
                 print(f"Error parsing parameter '{param}': {e}")
