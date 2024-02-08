@@ -12,15 +12,14 @@ from models.place import Place
 from models.review import Review
 from models.amenity import Amenity
 
-__classes = {"State": State, "Amenity": Amenity,
-             "City": City, "Place": Place,
-             "Review": Review, "User": User}
-
 
 class DBStorage:
     """DBStorage Class"""
     __engine = None
     __session = None
+    __classes = {"State": State, "Amenity": Amenity,
+                 "City": City, "Place": Place,
+                 "Review": Review, "User": User}
 
     def __init__(self):
         """init function"""
@@ -37,7 +36,7 @@ class DBStorage:
         """query on the current database session"""
         dictionary = {}
         if cls is None:
-            for cl in __classes.values():
+            for cl in DBStorage.__classes.values():
                 objects = self.__session.query(cl).all()
                 for obj in objects:
                     key = f'{obj.__class__.__name__}.{obj.id}'
