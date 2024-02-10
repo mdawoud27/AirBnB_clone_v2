@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Prepare the web servers
-
+#
 # Install Nginx if not installed
 sudo apt update
 sudo apt install nginx -y
