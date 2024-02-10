@@ -20,16 +20,14 @@ sudo ln -s /data/web_static/releases/test /data/web_static/current
 sudo chown -R ubuntu:ubuntu /data/
 
 # Update Nginx configuration
-nginx_config="server {\n"
-nginx_config+="\tlisten 80 default_server;\n"
-nginx_config+="\tlisten [::]:80 default_server;\n"
-nginx_config+="\tserver_name dawoud.tech;\n"
-nginx_config+="\tlocation /hbnb_static/ {\n"
-nginx_config+="\t\talias /data/web_static/current/;\n"
-nginx_config+="\t}\n"
-nginx_config+="}\n"
-
-echo -e "$nginx_config" | sudo tee /etc/nginx/sites-available/default > /dev/null
+sudo sh -c 'echo "server {
+     listen 80;
+     listen [::]:80 default_server;
+     server_name dawoud.tech
+     location /hbnb_static {
+        alias /data/web_static/current/;
+     }
+}" >> /etc/nginx/sites-available/default'
 
 # Restart and Reload Nginx
 sudo service nginx restart
