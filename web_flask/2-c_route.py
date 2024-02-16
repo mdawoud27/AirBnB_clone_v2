@@ -20,8 +20,8 @@ def say_hbnb():
 @app.route("/c/<text>", strict_slashes=False)
 def say_c_is(text=None):
     """Function that say some text about C."""
-    new_text = text.replace(' ', '_')
-    return f'C {new_text}'
+    text.replace('_', ' ')
+    return f'C {text}'
 
 
 if __name__ == '__main__':
