@@ -1,5 +1,4 @@
 push
-./web_flask/push
 file.json
 main_delete.py
 ./models/__pycache__

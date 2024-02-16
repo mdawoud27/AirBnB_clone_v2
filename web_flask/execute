@@ -1,3 +1,4 @@
 #!/bin/bash
 
-chmod +x *.py
+touch "$1"
+chmod +x "$1"
