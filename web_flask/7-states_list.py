@@ -2,12 +2,11 @@
 """script that starts a Flask web application"""
 from flask import Flask, render_template
 from models import storage
-from models.state import State
 
 app = Flask(__name__)
 
 
-@app.route("/states_list")
+@app.route("/states_list", strict_slashes=False)
 def display_states():
     """Function that displays a html page with the states listed"""
     states = sorted(list(storage.all("State").values()), key=lambda x: x.name)
